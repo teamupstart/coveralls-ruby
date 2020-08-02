@@ -58,7 +58,7 @@ module Coveralls
   def start!(simplecov_setting = 'test_frameworks', &block)
     if @@adapter == :simplecov
       ::SimpleCov.add_filter 'vendor'
-
+      ::SimpleCov.command_name SecureRandom.uuid
       if simplecov_setting
         Coveralls::Output.puts("[Coveralls] Using SimpleCov's '#{simplecov_setting}' settings.", :color => "green")
         if block_given?
